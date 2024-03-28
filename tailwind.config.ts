@@ -15,7 +15,7 @@ const config: Config = {
           170: "#808080",
         },
         yellow: {
-          550: "#FDBC11",
+          550: "#FDBC11", // custom yellow
         },
       },
     },
