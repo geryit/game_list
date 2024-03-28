@@ -22,12 +22,12 @@ export const login = async (prevState: any, formData: FormData) => {
     cookies().set("username", username);
 
     revalidatePath("/");
-    redirect("/");
+    return redirect("/");
   }
 };
 
 export const logout = async () => {
   cookies().delete("username");
   revalidatePath("/");
-  redirect("/");
+  return redirect("/");
 };
