@@ -14,6 +14,9 @@ const config: Config = {
           160: "#f2f2f2",
           170: "#808080",
         },
+        yellow: {
+          550: "#FDBC11",
+        },
       },
     },
   },
