@@ -15,9 +15,9 @@ type Props = {
 
 export default function Input({
   label,
-  type = "text",
   autoComplete,
   name,
+  type = "text",
 }: Props) {
   const [inputValue, setInputValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
