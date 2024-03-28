@@ -11,15 +11,17 @@ type Props = {
   autoComplete: HTMLInputAutoCompleteAttribute;
   name: string;
   type?: HTMLInputTypeAttribute;
+  defaultValue?: string;
 };
 
-export default function Input({
+const Input = ({
   label,
   autoComplete,
   name,
   type = "text",
-}: Props) {
-  const [inputValue, setInputValue] = useState("");
+  defaultValue,
+}: Props) => {
+  const [inputValue, setInputValue] = useState(defaultValue || "");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +42,7 @@ export default function Input({
         autoComplete={autoComplete}
         onChange={handleInputChange}
         name={name}
+        defaultValue={defaultValue}
       />
       <span
         className={`absolute pointer-events-none text-neutral-170 transition-all group-focus-within:-mt-7 group-focus-within:text-xs
@@ -63,4 +66,6 @@ export default function Input({
       )}
     </div>
   );
-}
+};
+
+export default Input;

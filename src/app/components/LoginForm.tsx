@@ -1,17 +1,32 @@
-import Image from "next/image";
-import Input from "./Input";
-import { login } from "@/app/actions";
+"use client";
 
-export default async function LoginForm() {
+import Image from "next/image";
+import Input from "@/app/components/Input";
+import { login } from "@/app/actions";
+import SubmitButton from "@/app/components/SubmitButton";
+import { useFormState } from "react-dom";
+
+const initialState = {
+  message: "",
+};
+
+export default function LoginForm() {
+  const [state, formAction] = useFormState(login, initialState);
+
   return (
     <div className=" w-full max-w-[25.75rem]">
       <div className="flex justify-center">
         <Image src="/logo.svg" alt="Logo" width={70} height={70} priority />
       </div>
 
-      <form className="mt-10" action={login}>
+      <form className="mt-10" action={formAction}>
         <div>
-          <Input label="Username" autoComplete="username" name="username" />
+          <Input
+            label="Username"
+            autoComplete="username"
+            name="username"
+            defaultValue="player1"
+          />
         </div>
         <div className="mt-4">
           <Input
@@ -19,16 +34,16 @@ export default async function LoginForm() {
             autoComplete="current-password"
             type="password"
             name="password"
+            defaultValue="player1"
           />
         </div>
-
+        {state.message && (
+          <div className="p-4 bg-red-200 text-red-600 mt-4 rounded">
+            {state.message}
+          </div>
+        )}
         <div className="mt-4">
-          <button
-            type="submit"
-            className="bg-yellow-550 hover:bg-yellow-400 w-full h-16 rounded"
-          >
-            Login
-          </button>
+          <SubmitButton />
         </div>
       </form>
     </div>
