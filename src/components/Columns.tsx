@@ -3,7 +3,7 @@ import { cols } from "@/constants";
 
 type Props = {
   selectedColIndex: number;
-  setSelectedColIndex: (index: number) => void;
+  setSelectedColIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const Columns = ({ selectedColIndex, setSelectedColIndex }: Props) => {
@@ -15,7 +15,7 @@ const Columns = ({ selectedColIndex, setSelectedColIndex }: Props) => {
         {cols.slice(0, -1).map((col) => (
           <div
             key={col}
-            className={` h-4 flex-1 ${selectedCol > col ? "bg-yellow-550 " : "bg-neutral-160"}`}
+            className={`h-4 flex-1 ${selectedCol > col ? "bg-yellow-550 " : "bg-neutral-160"}`}
           />
         ))}
       </div>
