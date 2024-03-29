@@ -1,20 +1,12 @@
-"use client";
-import React, {
-  HTMLInputAutoCompleteAttribute,
-  HTMLInputTypeAttribute,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { useState } from "react";
+import { cols } from "@/constants";
 
 type Props = {
   selectedColIndex: number;
   setSelectedColIndex: (index: number) => void;
 };
 
-const cols = [2, 3, 4];
-
-const Columns = ({ selectedColIndex, setSelectedColIndex }:Props) => {
+const Columns = ({ selectedColIndex, setSelectedColIndex }: Props) => {
   const [selectedCol, setSelectedCol] = useState(selectedColIndex);
 
   return (
@@ -31,7 +23,7 @@ const Columns = ({ selectedColIndex, setSelectedColIndex }:Props) => {
         {cols.map((col) => (
           <button
             key={col}
-            className={`relative hover:text-neutral-170 w-6 h-6 rounded-full cursor-pointer
+            className={`relative w-6 h-6 rounded-full cursor-pointer
               ${col <= selectedCol ? "bg-yellow-550" : "bg-neutral-160"}
               `}
             onClick={() => setSelectedColIndex(col)}

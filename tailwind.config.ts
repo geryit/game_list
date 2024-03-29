@@ -19,15 +19,21 @@ const config: Config = {
           550: "#FDBC11", // custom yellow
         },
         red: {
-          550: "#EC4466", // custom yellow
+          550: "#EC4466", // custom red
+        },
+        blue: {
+          550: "#3F53BE", // custom blue
         },
       },
       boxShadow: {
         custom: "0px 0px 4px 0px rgba(0, 0, 0, 0.1)",
       },
+      screens: {
+        xs: "428px",
+      },
     },
   },
-  safelist: ["grid-cols-2", "grid-cols-3", "grid-cols-4"],
+  safelist: ["xs:grid-cols-2", "xs:grid-cols-3", "xs:grid-cols-4"],
   plugins: [],
 };
 export default config;
