@@ -3,23 +3,19 @@ import React, {
   HTMLInputAutoCompleteAttribute,
   HTMLInputTypeAttribute,
   useCallback,
+  useEffect,
   useState,
 } from "react";
 
 type Props = {
-  label: string;
-  autoComplete: HTMLInputAutoCompleteAttribute;
-  name: string;
-  type?: HTMLInputTypeAttribute;
-  defaultValue?: string;
+  selectedColIndex: number;
+  setSelectedColIndex: (index: number) => void;
 };
 
 const cols = [2, 3, 4];
 
-const defaultCol = 3;
-
-const Columns = () => {
-  const [selectedCol, setSelectedCol] = useState(defaultCol);
+const Columns = ({ selectedColIndex, setSelectedColIndex }:Props) => {
+  const [selectedCol, setSelectedCol] = useState(selectedColIndex);
 
   return (
     <div className="mt-4 relative flex items-center">
@@ -38,9 +34,9 @@ const Columns = () => {
             className={`relative hover:text-neutral-170 w-6 h-6 rounded-full cursor-pointer
               ${col <= selectedCol ? "bg-yellow-550" : "bg-neutral-160"}
               `}
-            onClick={() => setSelectedCol(col)}
+            onClick={() => setSelectedColIndex(col)}
             onMouseEnter={() => setSelectedCol(col)}
-            onMouseLeave={() => setSelectedCol(defaultCol)}
+            onMouseLeave={() => setSelectedCol(selectedColIndex)}
           >
             {col}
           </button>

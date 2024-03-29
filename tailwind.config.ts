@@ -27,6 +27,7 @@ const config: Config = {
       },
     },
   },
+  safelist: ["grid-cols-2", "grid-cols-3", "grid-cols-4"],
   plugins: [],
 };
 export default config;
