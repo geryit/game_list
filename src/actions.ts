@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import users from "@/app/data/users.json";
+import users from "@/data/users.json";
 
 export const login = async (prevState: any, formData: FormData) => {
   const username = formData.get("username") as string;

@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import users from "@/app/data/users.json";
-import LogoutButton from "@/app/components/LogoutButton";
+import users from "@/data/users.json";
+import Games from "@/components/Games";
 
 export default function Home() {
   const username = cookies().get("username")?.value;
@@ -9,11 +9,5 @@ export default function Home() {
     redirect("/login");
   }
   const user = users.find((user) => user.username === username);
-  return (
-    <div className="">
-      <div>Game list</div>
-      <div>Welcome {user?.name}</div>
-      <LogoutButton />
-    </div>
-  );
+  return <Games user={user} />;
 }

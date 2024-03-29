@@ -1,8 +1,8 @@
-"use client";
 import Image from "next/image";
-import {
+import React, {
   HTMLInputAutoCompleteAttribute,
   HTMLInputTypeAttribute,
+  useCallback,
   useState,
 } from "react";
 
@@ -24,9 +24,12 @@ const Input = ({
   const [inputValue, setInputValue] = useState(defaultValue || "");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
+  const handleInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(event.target.value);
+    },
+    [],
+  );
 
   const isPassword = type === "password";
 
@@ -43,6 +46,7 @@ const Input = ({
         onChange={handleInputChange}
         name={name}
         defaultValue={defaultValue}
+        required
       />
       <span
         className={`absolute pointer-events-none text-neutral-170 transition-all group-focus-within:-mt-7 group-focus-within:text-xs
@@ -59,8 +63,8 @@ const Input = ({
           height={16}
           priority
           onClick={() => setShowPassword((prev) => !prev)}
-          className={`cursor-pointer ${
-            showingPassword ? "filter brightness-50" : ""
+          className={`cursor-pointer filter hover:brightness-50 ${
+            showingPassword ? "brightness-50" : ""
           }`}
         />
       )}

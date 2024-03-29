@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import LoginForm from "@/app/components/LoginForm";
+import LoginForm from "@/components/LoginForm";
 import { redirect } from "next/navigation";
 export default function Login() {
   if (cookies().get("username")) {

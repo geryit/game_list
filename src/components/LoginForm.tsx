@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Input from "@/app/components/Input";
-import { login } from "@/app/actions";
-import SubmitButton from "@/app/components/SubmitButton";
+import Input from "@/components/Input";
+import { login } from "@/actions";
+import SubmitButton from "@/components/SubmitButton";
 import { useFormState } from "react-dom";
 
 const initialState = {
