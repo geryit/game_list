@@ -86,7 +86,7 @@ const Games = ({ user }: Props) => {
         <div className="absolute xs:relative top-0 left-0 w-full xs:max-w-[25.75rem] p-6 xs:p-0">
           <div
             ref={filtersRef}
-            className="group  border border-neutral-160 rounded bg-white p-8 "
+            className="group border border-neutral-160 rounded bg-white p-8"
           >
             <input id="filters" className="hidden" type="checkbox" />
 
@@ -112,7 +112,7 @@ const Games = ({ user }: Props) => {
                 <Sort sortBy={sortBy} setSortBy={setSortBy} />
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 hidden xs:block">
                 <h2 className="text-neutral-170">Columns</h2>
                 <Columns
                   selectedColIndex={selectedColIndex}
