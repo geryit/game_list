@@ -139,4 +139,23 @@ describe("Games Component", () => {
       screen.getByTestId("games").querySelectorAll("div")[0].textContent,
     ).toContain("Game 2");
   });
+
+  it("column index change should work", () => {
+    render(<Games user={user} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "3" }));
+
+    // check the first game
+    expect(
+      screen.getByTestId("games").querySelectorAll("div")[0].textContent,
+    ).toContain("Game 4");
+
+    // sort again by date
+    fireEvent.click(screen.getByText("Newest"));
+
+    // check the first game
+    expect(
+      screen.getByTestId("games").querySelectorAll("div")[0].textContent,
+    ).toContain("Game 2");
+  });
 });
