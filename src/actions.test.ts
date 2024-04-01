@@ -63,7 +63,7 @@ describe("login function", () => {
 });
 
 describe("logout function", () => {
-  test("successfully logs out", async () => {
+  it("successfully logs out", async () => {
     // Call the logout function
     await logout();
 

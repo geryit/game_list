@@ -1,6 +1,7 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Games from "@/components/Games";
 import { User } from "@/types";
+import { userEvent } from "@testing-library/user-event";
 
 // Mock game data
 jest.mock(
@@ -89,10 +90,12 @@ describe("Games Component", () => {
     expect(groups.querySelectorAll("button")).toHaveLength(2);
   });
 
-  it("filters and displays games based on search input", () => {
+  it("filters and displays games based on search input", async () => {
     render(<Games user={user} />);
 
-    fireEvent.change(screen.getByPlaceholderText("Search"), {
+    const searchInput = screen.getByPlaceholderText("Search");
+
+    fireEvent.change(searchInput, {
       target: { value: "game 1" },
     });
 
@@ -108,7 +111,9 @@ describe("Games Component", () => {
   it("filters bg provider", () => {
     render(<Games user={user} />);
 
+    fireEvent.click(screen.getByText("Provider 2"));
     fireEvent.click(screen.getByText("Provider 1"));
+    fireEvent.click(screen.getByText("Provider 2"));
 
     expect(screen.getByTestId("games").querySelectorAll("div")).toHaveLength(2);
   });
@@ -116,7 +121,9 @@ describe("Games Component", () => {
   it("filters bg group", () => {
     render(<Games user={user} />);
 
+    fireEvent.click(screen.getByText("Group 2"));
     fireEvent.click(screen.getByText("Group 1"));
+    fireEvent.click(screen.getByText("Group 2"));
 
     expect(screen.getByTestId("games").querySelectorAll("div")).toHaveLength(3);
   });
@@ -143,19 +150,34 @@ describe("Games Component", () => {
   it("column index change should work", () => {
     render(<Games user={user} />);
 
+    expect(
+      screen.getByTestId("games").classList.contains("xs:grid-cols-4"),
+    ).toBe(true);
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "3" }));
+    fireEvent.mouseLeave(screen.getByRole("button", { name: "3" }));
+
     fireEvent.click(screen.getByRole("button", { name: "3" }));
 
-    // check the first game
     expect(
-      screen.getByTestId("games").querySelectorAll("div")[0].textContent,
-    ).toContain("Game 4");
+      screen.getByTestId("games").classList.contains("xs:grid-cols-3"),
+    ).toBe(true);
+  });
 
-    // sort again by date
-    fireEvent.click(screen.getByText("Newest"));
+  it("reset button should work", () => {
+    render(<Games user={user} />);
 
-    // check the first game
-    expect(
-      screen.getByTestId("games").querySelectorAll("div")[0].textContent,
-    ).toContain("Game 2");
+    fireEvent.change(screen.getByPlaceholderText("Search"), {
+      target: { value: "game 1" },
+    });
+    expect(screen.getByPlaceholderText("Search")).toHaveValue("game 1");
+
+    expect(screen.getByTestId("games").querySelectorAll("div")).toHaveLength(1);
+
+    fireEvent.click(screen.getByRole("button", { name: "Reset" }));
+
+    expect(screen.getByPlaceholderText("Search")).toHaveValue("");
+
+    expect(screen.getByTestId("games").querySelectorAll("div")).toHaveLength(4);
   });
 });

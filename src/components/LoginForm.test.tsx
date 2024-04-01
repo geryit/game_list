@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 
 // Mock the useFormState hook
@@ -15,5 +15,9 @@ describe("LoginForm Component", () => {
     expect(screen.getByAltText("Logo")).toBeInTheDocument();
     expect(screen.getByText("Username")).toBeInTheDocument();
     expect(screen.getByText("Password")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByTestId("username"), {
+      target: { value: "user1" },
+    });
   });
 });

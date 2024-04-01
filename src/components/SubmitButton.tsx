@@ -2,8 +2,6 @@
 import { useFormStatus } from "react-dom";
 import Image from "next/image";
 
-import { memo } from "react";
-
 const SubmitButton = () => {
   const { pending } = useFormStatus();
 
@@ -14,7 +12,13 @@ const SubmitButton = () => {
       className="bg-yellow-550 hover:bg-yellow-400 w-full h-16 rounded flex items-center justify-center"
     >
       {pending ? (
-        <Image src="/spinner.svg" alt="Logo" width={14} height={14} priority />
+        <Image
+          src="/spinner.svg"
+          alt="Spinner"
+          width={14}
+          height={14}
+          priority
+        />
       ) : (
         "Login"
       )}
@@ -22,4 +26,4 @@ const SubmitButton = () => {
   );
 };
 
-export default memo(SubmitButton);
+export default SubmitButton;

@@ -21,12 +21,7 @@ export default function LoginForm() {
 
       <form className="mt-10" action={formAction} data-testid="form">
         <div>
-          <Input
-            label="Username"
-            autoComplete="username"
-            name="username"
-            // defaultValue="player1"
-          />
+          <Input label="Username" autoComplete="username" name="username" />
         </div>
         <div className="mt-4">
           <Input
@@ -34,7 +29,6 @@ export default function LoginForm() {
             autoComplete="current-password"
             type="password"
             name="password"
-            // defaultValue="player1"
           />
         </div>
         {state.message && (
