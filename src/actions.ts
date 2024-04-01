@@ -5,10 +5,10 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import users from "@/data/users.json";
 
-export const login = async (prevState: any, formData: FormData) => {
+export const login = async (_prevState: any, formData: FormData) => {
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
-
+  console.log({ users, username, password });
   /// if username exists in users, check if password matches
   const user = users.find(
     (user) => user.username === username && user.password === password,
@@ -19,6 +19,7 @@ export const login = async (prevState: any, formData: FormData) => {
       message: "Invalid credentials",
     };
   } else {
+    console.log(1111, username);
     cookies().set("username", username);
 
     revalidatePath("/");

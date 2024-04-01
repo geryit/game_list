@@ -46,6 +46,7 @@ const Input = ({
         onChange={handleInputChange}
         name={name}
         defaultValue={defaultValue}
+        data-testid={name}
         required
       />
       <span

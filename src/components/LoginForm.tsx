@@ -19,13 +19,13 @@ export default function LoginForm() {
         <Image src="/logo.svg" alt="Logo" width={70} height={70} priority />
       </div>
 
-      <form className="mt-10" action={formAction}>
+      <form className="mt-10" action={formAction} data-testid="form">
         <div>
           <Input
             label="Username"
             autoComplete="username"
             name="username"
-            defaultValue="player1"
+            // defaultValue="player1"
           />
         </div>
         <div className="mt-4">
@@ -34,7 +34,7 @@ export default function LoginForm() {
             autoComplete="current-password"
             type="password"
             name="password"
-            defaultValue="player1"
+            // defaultValue="player1"
           />
         </div>
         {state.message && (
