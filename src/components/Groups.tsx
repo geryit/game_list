@@ -21,7 +21,7 @@ const Groups = ({ groupIds, setGroupIds }: Props) => {
     [setGroupIds],
   );
   return (
-    <div className="mt-4 flex flex-wrap gap-x-8 gap-y-4">
+    <div className="mt-4 flex flex-wrap gap-x-8 gap-y-4" data-testid="groups">
       {data.groups.map((group) => (
         <button
           key={group.id}

@@ -6,6 +6,9 @@ const nextConfig = {
             {
                 hostname: '1540257937.rsc.cdn77.org',
             },
+            {
+                hostname: 'images.example.com',
+            },
         ],
     },
 };

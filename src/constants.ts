@@ -7,5 +7,5 @@ export const defaultColIndex = 4;
 export const sortMethods = {
   "A-Z": (a: any, b: any) => a.name.localeCompare(b.name),
   "Z-A": (a: any, b: any) => b.name.localeCompare(a.name),
-  Newest: (a: any, b: any) => b.date - a.date,
+  Newest: (a: any, b: any) => a.date - b.date,
 } as Methods;

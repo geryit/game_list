@@ -9,7 +9,10 @@ type Props = {
 
 const GameList = ({ selectedColIndex, games }: Props) => {
   return (
-    <div className={`grid grid-cols-2 xs:grid-cols-${selectedColIndex} gap-5`}>
+    <div
+      className={`grid grid-cols-2 xs:grid-cols-${selectedColIndex} gap-5`}
+      data-testid="games"
+    >
       {!games.length ? "No games found" : ""}
       {games.map((game) => (
         <div
