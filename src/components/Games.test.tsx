@@ -13,7 +13,7 @@ jest.mock(
         provider: 1,
         cover: "https://images.example.com/game1.jpg",
         coverLarge: "https://images.example.com/game1.jpg",
-        date: new Date("29 July 2019").toISOString(),
+        date: "2021-07-29T15:36:31.974Z",
       },
       {
         id: 2,
@@ -21,7 +21,7 @@ jest.mock(
         provider: 1,
         cover: "https://images.example.com/game2.jpg",
         coverLarge: "https://images.example.com/game2.jpg",
-        date: new Date("29 July 2019").toISOString(),
+        date: "2020-07-29T15:36:31.974Z",
       },
       {
         id: 3,
@@ -29,7 +29,7 @@ jest.mock(
         provider: 2,
         cover: "https://images.example.com/game3.jpg",
         coverLarge: "https://images.example.com/game3.jpg",
-        date: new Date("28 August 2018").toISOString(),
+        date: "2023-07-29T15:36:31.974Z",
       },
       {
         id: 4,
@@ -37,7 +37,7 @@ jest.mock(
         provider: 2,
         cover: "https://images.example.com/game4.jpg",
         coverLarge: "https://images.example.com/game4.jpg",
-        date: new Date("18 June 2019").toISOString(),
+        date: "2020-08-29T15:36:31.974Z",
       },
     ],
     providers: [
@@ -137,6 +137,6 @@ describe("Games Component", () => {
     // check the first game
     expect(
       screen.getByTestId("games").querySelectorAll("div")[0].textContent,
-    ).toContain("Game 3");
+    ).toContain("Game 2");
   });
 });
