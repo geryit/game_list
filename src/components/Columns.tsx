@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cols } from "@/constants";
 
 /**
@@ -18,6 +18,10 @@ type Props = {
  */
 const Columns = ({ selectedColIndex, setSelectedColIndex }: Props) => {
   const [selectedCol, setSelectedCol] = useState(selectedColIndex);
+
+  useEffect(() => {
+    setSelectedCol(selectedColIndex);
+  }, [selectedColIndex]);
 
   return (
     <div className="mt-4 relative flex items-center">
