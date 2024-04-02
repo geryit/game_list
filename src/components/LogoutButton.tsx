@@ -22,4 +22,4 @@ const LogoutButton = () => {
   );
 };
 
-export default memo(LogoutButton);
+export default LogoutButton;

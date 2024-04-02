@@ -18,6 +18,16 @@ import { User } from "@/types";
 import { defaultColIndex, sortMethods } from "@/constants";
 import Image from "next/image";
 
+/**
+ * The Games component is a functional component in React.
+ * It manages the state and behavior of the game list.
+ * It uses several hooks from React to manage state and side effects.
+ * It also uses several custom components to display different parts of the UI.
+ *
+ * @param {Props} props - The props for the Games component.
+ * @returns {JSX.Element} The rendered Games component.
+ */
+
 type Props = {
   user: User;
 };
@@ -27,17 +37,18 @@ const Games = ({ user }: Props) => {
   const [providerIds, setProviderIds] = useState<number[]>([]);
   const [groupIds, setGroupIds] = useState<number[]>([]);
   const [sortBy, setSortBy] = useState<string | null>(null);
-
   const [selectedColIndex, setSelectedColIndex] = useState(defaultColIndex);
 
   const selectedGroups = data.groups.filter((group) =>
     groupIds.includes(group.id),
   );
 
+  // Games in selected group to be used in filtering
   const gamesIdsInSelectedGroups = selectedGroups
     .map((group) => group.games)
     .flat();
 
+  // Final list of games to be displayed
   const games = useMemo(
     () =>
       data.games
@@ -63,14 +74,17 @@ const Games = ({ user }: Props) => {
     setSelectedColIndex(defaultColIndex);
   }, []);
 
+  // Get the height of the filters div to be used as a spacer in mobile view
   const filtersRef = useRef<HTMLDivElement | null>(null);
   const [filtersHeight, setFiltersHeight] = useState(0);
 
   useEffect(() => {
+    // Get the height of the filters div to be used as a spacer in mobile view
     const heightOfElement = filtersRef.current?.clientHeight || 0;
     setFiltersHeight(heightOfElement);
   }, []);
 
+  // Render the Games component.
   return (
     <div className="bg-neutral-150">
       <Header user={user} />
@@ -80,14 +94,19 @@ const Games = ({ user }: Props) => {
           <GameList selectedColIndex={selectedColIndex} games={games} />
         </div>
 
-        <div className="xs:hidden" style={{ height: filtersHeight }}>
-          spacer
-        </div>
+        <div
+          data-testid="spacer"
+          className="xs:hidden"
+          style={{ height: filtersHeight }}
+        />
+
         <div className="absolute xs:relative top-0 left-0 w-full xs:max-w-[25.75rem] p-6 xs:p-0">
           <div
             ref={filtersRef}
             className="group border border-neutral-160 rounded bg-white p-8"
           >
+            {/*When filter button is pressed, hide/show the filters using
+             Tailwind's group-has-[:checked] feature*/}
             <input id="filters" className="hidden" type="checkbox" />
 
             <Search keyword={keyword} setKeyword={setKeyword} />

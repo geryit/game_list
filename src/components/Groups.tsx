@@ -1,3 +1,12 @@
+/**
+ * Represents a component that displays a list of groups.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {number[]} props.groupIds - An array of group IDs.
+ * @param {React.Dispatch<React.SetStateAction<number[]>>} props.setGroupIds - A function to update the group IDs.
+ * @returns {JSX.Element} The rendered component.
+ */
 import React, { useCallback } from "react";
 import data from "@/data/data.json";
 import type { Group } from "@/types";
@@ -18,7 +27,7 @@ const Groups = ({ groupIds, setGroupIds }: Props) => {
         }
       });
     },
-    [setGroupIds],
+    [setGroupIds]
   );
   return (
     <div className="mt-4 flex flex-wrap gap-x-8 gap-y-4" data-testid="groups">

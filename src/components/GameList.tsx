@@ -7,13 +7,21 @@ type Props = {
   games: Game[];
 };
 
-const GameList = ({ selectedColIndex, games }: Props) => {
-  return (
+/**
+ * Renders a list of games.
+ *
+ * @param {number} selectedColIndex - The number of columns to display in the grid.
+ * @param {Array<Game>} games - An array of game objects.
+ * @returns {JSX.Element} The rendered game list component.
+ */
+const GameList = ({ selectedColIndex, games }: Props): JSX.Element => {
+  return !games.length ? (
+    <div>No games found</div>
+  ) : (
     <div
       className={`grid grid-cols-2 xs:grid-cols-${selectedColIndex} gap-5`}
       data-testid="games"
     >
-      {!games.length ? "No games found" : ""}
       {games.map((game) => (
         <div
           key={game.id}

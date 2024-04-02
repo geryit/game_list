@@ -1,3 +1,25 @@
+/**
+ * Input component for displaying a labeled input field.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Input
+ *   label="Username"
+ *   autoComplete="username"
+ *   name="username"
+ *   type="text"
+ *   defaultValue="JohnDoe"
+ * />
+ * ```
+ *
+ * @param {string} label - The label text for the input field.
+ * @param {HTMLInputAutoCompleteAttribute} autoComplete - The autocomplete attribute for the input field.
+ * @param {string} name - The name attribute for the input field.
+ * @param {HTMLInputTypeAttribute} [type="text"] - The type attribute for the input field. Defaults to "text".
+ * @param {string} [defaultValue] - The default value for the input field.
+ * @returns {JSX.Element} The rendered Input component.
+ */
 import Image from "next/image";
 import React, {
   HTMLInputAutoCompleteAttribute,
@@ -28,7 +50,7 @@ const Input = ({
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(event.target.value);
     },
-    [],
+    []
   );
 
   const isPassword = type === "password";

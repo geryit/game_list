@@ -1,3 +1,16 @@
+/**
+ * Search component for filtering items based on a keyword.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Search keyword={keyword} setKeyword={setKeyword} />
+ * ```
+ *
+ * @param {string} keyword - The current search keyword.
+ * @param {React.Dispatch<React.SetStateAction<string>>} setKeyword - The function to update the search keyword.
+ * @returns {JSX.Element} The Search component.
+ */
 import React, { useCallback } from "react";
 import Image from "next/image";
 
@@ -11,7 +24,7 @@ const Search = ({ keyword, setKeyword }: Props) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(e.target.value);
     },
-    [setKeyword],
+    [setKeyword]
   );
   return (
     <div className="relative flex items-center justify-end">
